@@ -2,12 +2,15 @@
 
 namespace App\Entity;
 
+use App\Entity\Trait\SlugTrait;
 use App\Repository\LessonRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: LessonRepository::class)]
 class Lesson
 {
+    use SlugTrait;
+
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
@@ -28,6 +31,12 @@ class Lesson
     #[ORM\ManyToOne(targetEntity: Section::class, inversedBy: 'lessons')]
     #[ORM\JoinColumn(nullable: false)]
     private $section;
+
+    #[ORM\ManyToOne(targetEntity: Learn::class, inversedBy: 'lesson')]
+    private $learn;
+
+    #[ORM\Column(type: 'boolean')]
+    private $is_finished;
 
     public function getId(): ?int
     {
@@ -90,6 +99,30 @@ class Lesson
     public function setSection(?Section $section): self
     {
         $this->section = $section;
+
+        return $this;
+    }
+
+    public function getLearn(): ?Learn
+    {
+        return $this->learn;
+    }
+
+    public function setLearn(?Learn $learn): self
+    {
+        $this->learn = $learn;
+
+        return $this;
+    }
+
+    public function getIsFinished(): ?bool
+    {
+        return $this->is_finished;
+    }
+
+    public function setIsFinished(bool $is_finished): self
+    {
+        $this->is_finished = $is_finished;
 
         return $this;
     }

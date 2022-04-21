@@ -2,30 +2,30 @@
 
 namespace App\Repository;
 
-use App\Entity\Learners;
+use App\Entity\Learn;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\OptimisticLockException;
 use Doctrine\ORM\ORMException;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @method Learners|null find($id, $lockMode = null, $lockVersion = null)
- * @method Learners|null findOneBy(array $criteria, array $orderBy = null)
- * @method Learners[]    findAll()
- * @method Learners[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method Learn|null find($id, $lockMode = null, $lockVersion = null)
+ * @method Learn|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Learn[]    findAll()
+ * @method Learn[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class LearnersRepository extends ServiceEntityRepository
+class LearnRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, Learners::class);
+        parent::__construct($registry, Learn::class);
     }
 
     /**
      * @throws ORMException
      * @throws OptimisticLockException
      */
-    public function add(Learners $entity, bool $flush = true): void
+    public function add(Learn $entity, bool $flush = true): void
     {
         $this->_em->persist($entity);
         if ($flush) {
@@ -37,7 +37,7 @@ class LearnersRepository extends ServiceEntityRepository
      * @throws ORMException
      * @throws OptimisticLockException
      */
-    public function remove(Learners $entity, bool $flush = true): void
+    public function remove(Learn $entity, bool $flush = true): void
     {
         $this->_em->remove($entity);
         if ($flush) {
@@ -46,7 +46,7 @@ class LearnersRepository extends ServiceEntityRepository
     }
 
     // /**
-    //  * @return Learners[] Returns an array of Learners objects
+    //  * @return Learn[] Returns an array of Learn objects
     //  */
     /*
     public function findByExampleField($value)
@@ -63,7 +63,7 @@ class LearnersRepository extends ServiceEntityRepository
     */
 
     /*
-    public function findOneBySomeField($value): ?Learners
+    public function findOneBySomeField($value): ?Learn
     {
         return $this->createQueryBuilder('l')
             ->andWhere('l.exampleField = :val')

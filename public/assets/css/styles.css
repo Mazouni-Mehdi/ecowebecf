@@ -1,0 +1,28 @@
+nav {
+    background-color: #2c3e50;
+    color: #fff;
+}
+
+p {
+    text-align: center;
+}
+
+.footer {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+    background-color: #2c3e50;
+    color: #fff;
+}
+
+.copyright {
+    background-color: #1a252f;
+}
+
+h1 {
+    text-align: center;
+}
+
+body {
+    margin: 0;
+    height: 100vh;
+}

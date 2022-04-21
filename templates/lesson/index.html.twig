@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}lesson{% endblock %}
+
+{% block body %}
+    <h1>Suivre une lesson</h1>
+    {% for section in section %}
+        <div class="col-12">
+            {{ section.title }}
+        </div>
+    {% endfor %}
+{% endblock %}
+
